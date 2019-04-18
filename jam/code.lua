@@ -54,7 +54,7 @@ function game_update()
 end
 
 function game_draw()
-  cls()
+  cls(8)
   map(0, 0, 0, 0, 16 ,16)
   circfill(x, y, 3, 7)
 end
