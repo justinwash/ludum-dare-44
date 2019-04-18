@@ -37,6 +37,8 @@ end
 function show_game()
   x = 63
   y = 63
+  mapX = 0
+  mapY = 0
 	
   game.upd = game_update
   game.draw = game_draw
@@ -55,7 +57,7 @@ end
 
 function game_draw()
   cls(8)
-  map(0, 0, 0, 0, 16 ,16)
+  map(0, 0, mapX, mapY, 16 ,16)
   circfill(x, y, 3, 7)
 end
 
