@@ -45,6 +45,9 @@ function show_game()
 end
 
 function game_update()
+  mapX -= 1
+  if mapX < -127 then mapX = 0 end
+  
   if btn(0) then x-=1 end
   if btn(1) then x+=1 end
   if btn(2) then y-=1 end
@@ -58,6 +61,7 @@ end
 function game_draw()
   cls(8)
   map(0, 0, mapX, mapY, 16 ,16)
+  map(0, 0, mapX + 128, mapY, 16 ,16)
   circfill(x, y, 3, 7)
 end
 
