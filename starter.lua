@@ -77,3 +77,4 @@ function game_over_draw()
 	print("game over", 10, 10, 7)
 	print("press z to restart", 10, 20, 7)
 end
+ 
