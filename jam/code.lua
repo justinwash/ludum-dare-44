@@ -1,30 +1,11 @@
--- system --
-
-game = {}
-
-function _init()
-  show_menu()
-end
-
-function _update()
-  game.upd()
-end
-
-function _draw()
-  game.draw()
-end
-
 -- main menu --
-
 function show_menu()
   game.upd = menu_update
   game.draw = menu_draw
 end
 
 function menu_update()
-  if btn(4) then
-    show_game()
-  end
+  if btn(4) then show_game() end
 end
 
 function menu_draw()
@@ -33,49 +14,41 @@ function menu_draw()
 end
 
 -- main game --
-
 function show_game()
   x = 63
   y = 63
-  mapX = 0
-  mapY = 0
-	
+  mapx = 0
+  mapy = 0
   game.upd = game_update
   game.draw = game_draw
 end
 
 function game_update()
-  mapX -= 1
-  if mapX < -127 then mapX = 0 end
+  mapx -= 1
+  if mapx < -127 then mapx = 0 end
   
   if btn(0) then x-=1 end
   if btn(1) then x+=1 end
   if btn(2) then y-=1 end
   if btn(3) then y+=1 end
-	
-  if x < 0 or x > 127 or y < 0 or y > 127 then
-    show_game_over()
-  end
+  if x < 0 or x > 127 or y < 0 or y > 127 then show_game_over() end
 end
 
 function game_draw()
   cls(8)
-  map(0, 0, mapX, mapY, 16 ,16)
-  map(0, 0, mapX + 128, mapY, 16 ,16)
+  map(0, 0, mapx, mapy, 16 ,16)
+  map(0, 0, mapx + 128, mapy, 16 ,16)
   circfill(x, y, 3, 7)
 end
 
 -- game over --
-
 function show_game_over()
   game.upd = game_over_update
   game.draw = game_over_draw
 end
 
 function game_over_update()
-  if btn(4) then
-    show_game()
-  end
+  if btn(4) then show_menu() end
 end
 
 function game_over_draw()
