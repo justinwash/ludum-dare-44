@@ -25,7 +25,7 @@ function show_menu()
 end
 
 function menu_update()
-  if btn(btn1) then show_game() end
+  if btnp(btn1) then show_game() end
 end
 
 function menu_draw()
@@ -58,7 +58,7 @@ function game_draw()
   cls(red)
   map(0, 0, mapx, mapy, 16 ,16)
   map(0, 0, mapx + 128, mapy, 16 ,16)
-  circfill(x, y, 3, 7)
+  spr(1, x, y)
 end
 
 -- game over --
@@ -68,7 +68,7 @@ function show_game_over()
 end
 
 function game_over_update()
-  if btn(btn1) then show_menu() end
+  if btnp(btn1) then show_menu() end
 end
 
 function game_over_draw()
