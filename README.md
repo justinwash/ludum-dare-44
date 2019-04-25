@@ -17,14 +17,17 @@ A game made for Ludum Dare 44
 * Control a Cube that spins up to 90 degrees at a time. It has 4 different colored sides that have different effects on the things it contacts. Obstacles fly in from the four sides of the screen that should be dealt with with the specific effects of the sides of the cube. E.g. bounce circles away with the blue side and explode triangles with the yellow side but absorb squares with the red side for health and collect stars with the green side to get points.
 
 #### Space Exploration
+* 
 
 #### Change the Genre of a Classic Video Game (pls no)
 * Tetris + Pinball. Use pinball flippers to smack tetriminos into place at the top of the screen.
 * Call it Pintrist.
 
 #### Only One Enemy
+* 
 
 #### Risky Powerups
+* 
 
 #### Shelter
 * A hiking game where you try not to get eaten by bears? ????
@@ -47,7 +50,11 @@ A game made for Ludum Dare 44
 * See "Your Life is Currency".
 
 #### Mutation
+* 
 
 #### No Upgrades, Only Downgrades
+* 
 
 #### Underground
+* 
+
