@@ -1,9 +1,25 @@
 pico-8 cartridge // http://www.pico-8.com
 version 18
 __lua__
+-- set global variables --
+left,right,up,down,btn1,btn2=0,1,2,3,4,5
+black,dark_blue,dark_purple,dark_green,
+brown,dark_gray,light_gray,white,red,
+orange,yellow,green,blue,indigo,pink,peach=
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 
-#include code.p8
+-- lifecycle hooks --
+#include main.p8
+#include menu.p8
+#include gameover.p8
 
+-- player --
+#include player.p8
+
+-- map --
+#include map.p8
+
+-- cart info --
 __gfx__
 00000000000000002222222200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000011111102888888e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
