@@ -10,6 +10,7 @@ A game made for Ludum Dare 44
 * A "bomb-defusal"-esque game where you do certain actions (flip switches, unplug and replug wires, press buttons, etc) to raise and lower the power level of an electricity-powered machine. There's a guage that goes from "Ridiculously Underpowered" to "Ridiculously Overpowered" and if it reaches either of those you lose. Could either be "Keep Talking and Nobody Explodes" style puzzle game or "Lovers in a Dangerous Spacetime" style platforming.
 
 #### Your Life is Currency
+* There is not only one Death, but a town populated by Deaths who use human souls as currency. Play as one of these Deaths, traveling to the mortal world to perform undertakings in order to afford to furnish your cute little bungalow in the 'burbs of Deathville.
 
 #### Side Effects
 
