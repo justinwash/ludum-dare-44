@@ -8,7 +8,7 @@ function gameover_show()
 end
 
 function gameover_update()
-  if btnp(btn1) then menu_show() end
+  if btnp(btn1) then _init() end
 end
 
 function gameover_draw()

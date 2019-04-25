@@ -4,11 +4,18 @@ __lua__
 
 player={
   x=63,
-  y=63
+  y=63,
+  busy=false
 }
+function player_init()
+  player.x=63
+  player.y=63
+end
 
 function player_update()
-  if player_shouldmove() then player_act=player_move end
+  if not player.busy then
+    if player_shouldmove() then player_act=player_move end
+  end
 
   player_act()
 end
