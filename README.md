@@ -4,6 +4,7 @@ A game made for Ludum Dare 44
 ## Ideas by theme
 
 #### Limited Memory
+* The player character is reliving/remembering an experience. The level is short at first, but each time you beat it more gets added to the end. Start from the beginning each time.
 
 #### Ridiculously Overpowered
 
