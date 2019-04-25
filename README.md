@@ -56,8 +56,8 @@ A game made for Ludum Dare 44
 * See "Risky Powerups".
 
 #### No Upgrades, Only Downgrades
-* 
+* On trial for a crime you definitely, totally committed, lie your best to convince the judge to lessen your charges. It's not gonna get better, but it could definitely be worse.
 
 #### Underground
-* 
+* Paperboy style game where you hand out flyers for your band's basement show in the hip part of town. Get points for each flyer given, but make sure you only give them to the COOL peaople. There's some definitely uncool people in this crowd that might get you shut down if they find out.
 
