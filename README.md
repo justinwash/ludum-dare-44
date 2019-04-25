@@ -30,7 +30,7 @@ A game made for Ludum Dare 44
 * One long boss fight? Could maybe do a SHMUP/bullet-hell thing with a single enemy that changes its patterns at set intervals?
 
 #### Risky Powerups
-* 
+* Cocaine?
 
 #### Shelter
 * A hiking game where you try not to get eaten by bears? ????
@@ -53,7 +53,7 @@ A game made for Ludum Dare 44
 * See "Your Life is Currency".
 
 #### Mutation
-* 
+* See "Risky Powerups".
 
 #### No Upgrades, Only Downgrades
 * 
