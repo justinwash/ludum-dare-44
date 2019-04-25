@@ -20,7 +20,8 @@ A game made for Ludum Dare 44
 * This boring af theme better not be picked.
 * Cats in space that shoot later beams. 🙀
 * Lazer*
-* Get Out Of My Space! See how far you can encroach your belongings on your dorm-mates side of the room before they notice and throw you out
+* Get Out Of My Space! See how far you can encroach your belongings on your dorm-mates side of the room before they notice and throw you out.
+* Space doge Darwin searches the universe for his lost mom. Working title: Aubrey Left The House Again
 
 #### Change the Genre of a Classic Video Game (pls no)
 * Tetris + Pinball. Use pinball flippers to smack tetriminos into place at the top of the screen.
