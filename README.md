@@ -17,14 +17,17 @@ A game made for Ludum Dare 44
 * Control a Cube that spins up to 90 degrees at a time. It has 4 different colored sides that have different effects on the things it contacts. Obstacles fly in from the four sides of the screen that should be dealt with with the specific effects of the sides of the cube. E.g. bounce circles away with the blue side and explode triangles with the yellow side but absorb squares with the red side for health and collect stars with the green side to get points.
 
 #### Space Exploration
-* 
+* This boring af theme better not be picked.
+* Cats in space that shoot later beams. 🙀
+* Lazer*
+* Get Out Of My Space! See how far you can encroach your belongings on your dorm-mates side of the room before they notice and throw you out
 
 #### Change the Genre of a Classic Video Game (pls no)
 * Tetris + Pinball. Use pinball flippers to smack tetriminos into place at the top of the screen.
 * Call it Pintrist.
 
 #### Only One Enemy
-* 
+* One long boss fight? Could maybe do a SHMUP/bullet-hell thing with a single enemy that changes its patterns at set intervals?
 
 #### Risky Powerups
 * 
