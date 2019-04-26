@@ -5,6 +5,10 @@ __lua__
 player={
   x=63,
   y=63,
+  dx=0,
+  dy=0,
+  w=8,
+  h=8,
   busy=false
 }
 function player_init()
@@ -18,6 +22,7 @@ function player_update()
   end
 
   player_act()
+  player_updatepos()
 end
 
 function player_draw() 
@@ -42,9 +47,26 @@ function player_shouldmove()
 end
 
 function player_move() 
-  if btn(left) then player.x-=1 end
-  if btn(right) then player.x+=1 end
-  if btn(up) then player.y-=1 end
-  if btn(down) then player.y+=1 end
+  if btn(left) then player.dx-=1 end
+  if btn(right) then player.dx+=1 end
+  if btn(up) then player.dy-=1 end
+  if btn(down) then player.dy+=1 end
 end
 
+function player_updatepos()
+  local x=player.x
+  local y=player.y
+  local w=player.w
+  local h=player.h
+  
+  if map_wouldcollide(x+player.dx,y,w,h)
+    player.dx=0
+  end
+
+  if map_wouldcollide(x,y+player.dy,w,h)
+    player.dy=0
+  end
+
+  player.x+=player.dx
+  player.y+=player.dy
+end
