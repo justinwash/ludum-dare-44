@@ -11,12 +11,20 @@ player={
   h=8,
   busy=false
 }
+
 function player_init()
   player.x=63
   player.y=63
 end
 
+function player_eachframe()
+  player.dx=0
+  player.dy=0
+end
+
 function player_update()
+  player_eachframe()
+
   if not player.busy then
     if player_shouldmove() then player_act=player_move end
   end
@@ -59,11 +67,11 @@ function player_updatepos()
   local w=player.w
   local h=player.h
   
-  if map_wouldcollide(x+player.dx,y,w,h)
+  if map_wouldcollide(x+player.dx,y,w,h) then
     player.dx=0
   end
 
-  if map_wouldcollide(x,y+player.dy,w,h)
+  if map_wouldcollide(x,y+player.dy,w,h) then
     player.dy=0
   end
 

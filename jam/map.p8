@@ -10,13 +10,14 @@ bg={
 }
 
 function map_update()
-  bg.x -= 1
-  if bg.x < -127 then bg.x = 0 end
+  -- scroll map. breaks collision rn
+  -- bg.sx -= 1
+  -- if bg.sx < -127 then bg.sx = 0 end
 end
 
 function map_draw()
-  map(bg.celx, bg.cely, bg.x, bg.y, 16 ,16)
-  map(bg.celx, bg.cely, bg.x + 128, bg.y, 16 ,16)
+  map(bg.celx, bg.cely, bg.sx, bg.sy, 16 ,16)
+  map(bg.celx, bg.cely, bg.sx + 128, bg.sy, 16 ,16)
 end
 
 function map_gettile(screenx, screeny)
@@ -31,13 +32,13 @@ function map_getflag(tile)
 end
 
 function map_wouldcollide(x,y,w,h)
-  for i=x,x+w,w do
+  for i=x-1,x+w,w do
     if map_getflag(map_gettile(i,y))>0
-    or map_getflag(map_gettile(i,y+h))>0
+    or map_getflag(map_gettile(i,y+h-1))>0
     then
       return true
-    else 
-      return false
     end
   end
+
+  return false
 end
