@@ -79,6 +79,16 @@ function player_updatepos()
     player.dy=0
   end
 
+  --player cannot scroll left on the first map page
+  if map_getPage() == 0 and player.x < 1 then
+    player.dx = 1
+  end
+
+  --player cannot go above map ceilng
+  if player.y == 0 then
+    player.dy = 1
+  end
+
   player.x+=player.dx
   player.y+=player.dy
 

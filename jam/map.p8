@@ -69,3 +69,7 @@ function map_wouldcollide(x,y,w,h)
 
   return false
 end
+
+function map_getPage() 
+  return bg.page
+end
