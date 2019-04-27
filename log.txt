@@ -12,7 +12,7 @@ codo_init
     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 fullscreen
     08 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
     09 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-    10 sessions 13 // number of times program has been run
+    10 sessions 19 // number of times program has been run
     11 rmb_key 0 // 0 for none  226 for LALT
     12 desktop_path 
     13 sound_volume 256 // 0..256
@@ -20,8 +20,8 @@ codo_init
     15 mix_buffer_size 1024
     16 version 0.1.12c
     17 volume 256
-    18 root_path /Users/pomme/Documents/Dev/Ludum-Dare-44/carts/
-    19 cdata_path /Users/pomme/Documents/Dev/Ludum-Dare-44/cdata/
+    18 root_path /Users/aubrey/ludum-dare-44/carts/
+    19 cdata_path /Users/aubrey/ludum-dare-44/cdata/
     20 joystick_index 0
     21 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 
     22 live_notes 0
@@ -35,6 +35,18 @@ codo_init
     30 splore_filter 0
     31 tab_width 1
   
+  codo_system_init
+  Compiled against SDL version: 2.0.8
+  Linked against SDL version:   2.0.8
+  Current video driver: cocoa
+  codo_reset_timer
+  codo_gui_init
+  codo_keys_init
+  codo_text_init
+  codo_video_init
+  codo_mouse_init
+  codo_joystick_init
+  Reading controller mappings: /Users/aubrey/ludum-dare-44/sdl_controllers.txt
   searching for joysticks
     found 0 joysticks
   ok
@@ -55,14 +67,4 @@ SDL_OpenAudio ok
  channels:1
 Built-in audio drivers: 0 coreaudio 1 disk 2 dummy
 Current audio driver: coreaudio
-loading /Users/pomme/Documents/Dev/Ludum-Dare-44/jam/cart.p8
-codo_exit
-  cmusic_stop
-  codo_main_exit
-  codo_config_save
-  codo_sound_exit
-  codo_video_exit
-  codo_joystick_exit
-  codo_system_exit
-  codo_items_created: 1025
-ok
+loading /Users/aubrey/ludum-dare-44/jam/cart.p8
