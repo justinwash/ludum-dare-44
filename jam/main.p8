@@ -42,6 +42,6 @@ function game_checkfail()
   or player.x > 127 
   or player.y < 0 
   or player.y > 127 then 
-    gameover_show() 
+    -- gameover_show() 
   end
 end

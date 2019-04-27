@@ -58,7 +58,11 @@ function player_move()
   if btn(left) then player.dx-=1 end
   if btn(right) then player.dx+=1 end
   if btn(up) then player.dy-=1 end
-  if btn(down) then player.dy+=1 end
+
+  if btn(down) then 
+    player.dy+=1
+  end
+
 end
 
 function player_updatepos()
@@ -77,4 +81,6 @@ function player_updatepos()
 
   player.x+=player.dx
   player.y+=player.dy
+
+  map_shouldScroll()
 end
