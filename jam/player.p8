@@ -18,8 +18,16 @@ function player_init()
 end
 
 function player_eachframe()
+  local x=player.x
+  local y=player.y
+  local w=player.w
+  local h=player.h
+
   player.dx=0
   player.dy=0
+
+  if not player_wouldcollidey() then
+    player.dy+=1 end
 end
 
 function player_update()
@@ -27,6 +35,7 @@ function player_update()
 
   if not player.busy then
     if player_shouldmove() then player_act=player_move end
+    if player_shouldjump() then player_act=player_jump end
   end
 
   player_act()
@@ -57,12 +66,51 @@ end
 function player_move() 
   if btn(left) then player.dx-=1 end
   if btn(right) then player.dx+=1 end
-  if btn(up) then player.dy-=1 end
+end
 
-  if btn(down) then 
-    player.dy+=1
+function player_shouldjump()
+  if player_wouldcollidey() and btnp(btn1) then
+    return true
+  else return false end
+end
+
+function player_jump()
+  if not player.busy then
+    player.busy=true
+    player.jumpmomentum=5
+  else
+    if btn(left) then player.dx-=1 end
+    if btn(right) then player.dx+=1 end
+    player.dy-=player.jumpmomentum
+    if player.jumpmomentum*0.9 > 0.1 then
+      player.jumpmomentum=player.jumpmomentum*0.9
+    else 
+      player.jumpmomentum=0 
+      player.busy=false
+    end
   end
+end
 
+function player_wouldcollidex()
+local x=player.x
+  local y=player.y
+  local w=player.w
+  local h=player.h
+  
+  if map_wouldcollide(x+player.dx,y,w,h) then
+    return true
+  else return false end
+end
+
+function player_wouldcollidey()
+  local x=player.x
+  local y=player.y
+  local w=player.w
+  local h=player.h
+
+  if map_wouldcollide(x,y+player.dy,w,h) then
+    return true
+  else return false end
 end
 
 function player_updatepos()
@@ -71,11 +119,11 @@ function player_updatepos()
   local w=player.w
   local h=player.h
   
-  if map_wouldcollide(x+player.dx,y,w,h) then
+  if player_wouldcollidex() then
     player.dx=0
   end
 
-  if map_wouldcollide(x,y+player.dy,w,h) then
+  if player_wouldcollidey() then
     player.dy=0
   end
 
@@ -94,3 +142,5 @@ function player_updatepos()
 
   map_shouldScroll()
 end
+
+

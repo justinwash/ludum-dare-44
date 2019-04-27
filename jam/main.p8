@@ -32,7 +32,7 @@ function game_update()
 end
 
 function game_draw()
-  cls(red)
+  cls(dark_blue)
   map_draw()
   player_draw()
 end
