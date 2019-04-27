@@ -13,12 +13,20 @@ player={
   h=16,
   busy=false,
   jumpmomentum=3,
-  timeonground=0
+  timeonground=0,
+  abilities={}
 }
 
 function player_init()
   player.x=63
   player.y=63
+
+  player.abilities={
+    djump=purchases[1].bought,
+    lazers=purchases[2].bought,
+    jetpack=purchases[3].bought,
+    yarn=purchases[4].bought
+  }
 end
 
 function player_eachframe()
@@ -40,8 +48,8 @@ function player_update()
 
   if not player.busy then
     player_act=player_idle
-    if player_shouldmove() then player_move() end
-    if player_shouldjump() then player_jump() end
+    if player_shouldmove() then player_act=player_move end
+    if player_shouldjump() then player_act=player_jump end
   end
 
   player_act()

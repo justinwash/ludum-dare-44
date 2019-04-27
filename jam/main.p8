@@ -15,12 +15,14 @@ end
 
 function _draw()
   game.draw()
+  print(player.abilities.djump)
 end
 
 -- main game --
 function game_show()
   mapx = 0
   mapy = 0
+  player_init()
   game.upd = game_update
   game.draw = game_draw
 end
