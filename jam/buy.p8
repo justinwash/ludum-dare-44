@@ -8,10 +8,10 @@ cursor={
   pos=1
 }
 
-purchases={ {24,'double-jump',color=white,bought=false,cost=2},
-          {30,'lazers',color=white,bought=false,cost=3},
-          {36,'jetpack',color=white,bought=false,cost=5},
-          {42,'the biggest ball o\' yarn',color=white,bought=false,cost=8} 
+purchases={ {24,'double-jump',color=white,bought=false,cost=3},
+          {30,'lazers',color=white,bought=false,cost=2},
+          {36,'jetpack',color=white,bought=false,cost=8},
+          {42,'the biggest ball o\' yarn',color=white,bought=false,cost=9} 
 }
 
 spent=0

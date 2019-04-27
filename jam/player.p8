@@ -44,6 +44,9 @@ function player_eachframe()
   else 
     player.timeonground+=1
     player.jumpcount=0 end
+
+  if player.dx>0 then player.flip=true
+  elseif player.dx<0 then player.flip=false end
 end
 
 function player_update()
@@ -54,6 +57,7 @@ function player_update()
     if player_shouldmove() then player_act=player_move end
     if player_shouldjump() then player_act=player_jump end
     if player_shoulddoublejump() then player_act=player_doublejump end
+    if player_shouldjetpack() then player_act=player_jetpack end
   end
 
   player_act()
@@ -111,6 +115,20 @@ function player_doublejump()
   if player.jumpcount<2 then
       player.dy=0
       player_jump()
+  end
+end
+
+function player_shouldjetpack()
+  if btn(btn1) and player.abilities.jetpack then
+    return true
+  else return false end
+end
+
+function player_jetpack()
+  if btn(left) then player.dx-=1 end
+  if btn(right) then player.dx+=1 end
+  if player.y>1 then
+      player.dy=-1.5
   end
 end
 
