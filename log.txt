@@ -35,18 +35,6 @@ codo_init
     30 splore_filter 0
     31 tab_width 1
   
-  codo_system_init
-  Compiled against SDL version: 2.0.8
-  Linked against SDL version:   2.0.8
-  Current video driver: cocoa
-  codo_reset_timer
-  codo_gui_init
-  codo_keys_init
-  codo_text_init
-  codo_video_init
-  codo_mouse_init
-  codo_joystick_init
-  Reading controller mappings: /Users/pomme/Documents/Dev/Ludum-Dare-44/sdl_controllers.txt
   searching for joysticks
     found 0 joysticks
   ok

@@ -7,8 +7,8 @@ player={
   y=63,
   dx=0,
   dy=0,
-  w=8,
-  h=8,
+  w=16,
+  h=16,
   busy=false
 }
 
@@ -34,7 +34,7 @@ function player_update()
 end
 
 function player_draw() 
-  spr(1, player.x, player.y)
+  spr(9, player.x, player.y, player.w/8, player.h/8)
 end
 
 function player_act()
