@@ -6,7 +6,8 @@ bg={
   celx=0,
   cely=0,
   sx=0,
-  sy=0
+  sy=0,
+  page=0
 }
 
 function map_update()
@@ -28,6 +29,7 @@ function map_gettile(screenx, screeny)
   printh("screenx: " .. screenx)
   printh("bg: (" .. bg.sx .. ", " .. bg.sy .. ")")
   printh("cel: (" .. bg.celx .. ", " .. bg.cely .. ")")
+  printh("map page: " .. bg.page)
 
   return mget(x,y)
 end
@@ -40,11 +42,13 @@ function map_shouldScroll()
   if player.x > 127 then
     bg.celx += scrollFactor
     player.x -= scrollFactor * sizeFactor
+    bg.page+=1
   end
 
-  if player.x < 0 then 
+  if player.x < 0 and bg.page > 0 then 
     bg.celx -= scrollFactor
     player.x += scrollFactor * sizeFactor
+    bg.page-=1
   end
 
   
@@ -64,4 +68,8 @@ function map_wouldcollide(x,y,w,h)
   end
 
   return false
+end
+
+function map_getPage() 
+  return bg.page
 end
