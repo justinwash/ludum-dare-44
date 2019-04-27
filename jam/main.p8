@@ -9,7 +9,7 @@ function _init()
   menu_show()
 end
 
-function _update()
+function _update60()
   game.upd()
 end
 
