@@ -13,6 +13,7 @@ player={
   h=16,
   busy=false,
   jumpmomentum=3,
+  jumpcount=0,
   timeonground=0,
   abilities={}
 }
@@ -40,7 +41,9 @@ function player_eachframe()
     player.timeonground=0
     player.dy+=0.2
     if player.dy>2 then player.dy=2 end
-  else player.timeonground+=1 end
+  else 
+    player.timeonground+=1
+    player.jumpcount=0 end
 end
 
 function player_update()
@@ -50,6 +53,7 @@ function player_update()
     player_act=player_idle
     if player_shouldmove() then player_act=player_move end
     if player_shouldjump() then player_act=player_jump end
+    if player_shoulddoublejump() then player_act=player_doublejump end
   end
 
   player_act()
@@ -94,6 +98,20 @@ function player_jump()
     if btn(left) then player.dx-=1 end
     if btn(right) then player.dx+=1 end
     player.dy-=player.jumpmomentum
+    player.jumpcount+=1
+end
+
+function player_shoulddoublejump()
+  if btnp(btn1) and player.abilities.djump then
+    return true
+  else return false end
+end
+
+function player_doublejump()
+  if player.jumpcount<2 then
+      player.dy=0
+      player_jump()
+  end
 end
 
 function player_wouldcollidex()
