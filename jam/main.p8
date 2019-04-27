@@ -9,7 +9,7 @@ function _init()
   menu_show()
 end
 
-function _update()
+function _update60()
   game.upd()
 end
 
@@ -32,16 +32,15 @@ function game_update()
 end
 
 function game_draw()
-  cls(red)
+  cls(dark_blue)
   map_draw()
   player_draw()
 end
 
 function game_checkfail()
-  if player.x < 0 
-  or player.x > 127 
-  or player.y < 0 
-  or player.y > 127 then 
-    gameover_show() 
+
+  if player.y > 127 then 
+    gameover_show()
   end
+  
 end
