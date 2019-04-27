@@ -3,13 +3,17 @@ version 16
 __lua__
 
 player={
+  spr=1,
+  flip=true,
   x=63,
   y=63,
   dx=0,
   dy=0,
   w=16,
   h=16,
-  busy=false
+  busy=false,
+  jumpmomentum=3,
+  timeonground=0
 }
 
 function player_init()
@@ -24,18 +28,20 @@ function player_eachframe()
   local h=player.h
 
   player.dx=0
-  player.dy=0
-
-  if not player_wouldcollidey() then
-    player.dy+=1 end
+  if not player_isonground() then
+    player.timeonground=0
+    player.dy+=0.2
+    if player.dy>2 then player.dy=2 end
+  else player.timeonground+=1 end
 end
 
 function player_update()
   player_eachframe()
 
   if not player.busy then
-    if player_shouldmove() then player_act=player_move end
-    if player_shouldjump() then player_act=player_jump end
+    player_act=player_idle
+    if player_shouldmove() then player_move() end
+    if player_shouldjump() then player_jump() end
   end
 
   player_act()
@@ -43,7 +49,7 @@ function player_update()
 end
 
 function player_draw() 
-  spr(9, player.x, player.y, player.w/8, player.h/8)
+  spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
 end
 
 function player_act()
@@ -51,7 +57,7 @@ function player_act()
 end
 
 function player_idle()  
-  -- do nothing
+  -- reset jump strength
 end
 
 function player_shouldmove()
@@ -69,26 +75,17 @@ function player_move()
 end
 
 function player_shouldjump()
-  if player_wouldcollidey() and btnp(btn1) then
+  if btnp(btn1) and player_isonground() then
     return true
-  else return false end
+  else 
+    return false 
+  end
 end
 
 function player_jump()
-  if not player.busy then
-    player.busy=true
-    player.jumpmomentum=5
-  else
     if btn(left) then player.dx-=1 end
     if btn(right) then player.dx+=1 end
     player.dy-=player.jumpmomentum
-    if player.jumpmomentum*0.9 > 0.1 then
-      player.jumpmomentum=player.jumpmomentum*0.9
-    else 
-      player.jumpmomentum=0 
-      player.busy=false
-    end
-  end
 end
 
 function player_wouldcollidex()
@@ -109,6 +106,17 @@ function player_wouldcollidey()
   local h=player.h
 
   if map_wouldcollide(x,y+player.dy,w,h) then
+    return true
+  else return false end
+end
+
+function player_isonground()
+  local x=player.x
+  local y=player.y
+  local w=player.w
+  local h=player.h
+
+  if map_wouldcollide(x,y+1,w,h) then
     return true
   else return false end
 end
