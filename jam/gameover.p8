@@ -3,6 +3,7 @@ version 16
 __lua__
 
 function gameover_show()
+  music(-1,1000)
   game.upd = gameover_update
   game.draw = gameover_draw
 end
