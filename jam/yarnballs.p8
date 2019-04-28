@@ -8,6 +8,11 @@ yarn = {
     balls = {}
 }
 
+function yarnballs_reset() 
+    yarn.loop = 0
+    yarn.available = true
+end
+
 function yarnballs_generate() 
     for i=1,8 do yarn.balls[i]=yarnballs_createball(i) end
 end

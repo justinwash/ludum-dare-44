@@ -14,6 +14,7 @@ orange,yellow,green,blue,indigo,pink,peach=
 #include gameover.p8
 #include buy.p8
 #include yarnballs.p8
+#include pigeons.p8
 
 -- player --
 #include player.p8
