@@ -8,10 +8,10 @@ cursor={
   pos=1
 }
 
-purchases={ {36,'catnip',color=white,bought=false,cost=3,description='need a boost?'},
-          {42,'lazers',color=white,bought=false,cost=2,description='yes, literally lazers'},
+purchases={ {36,'catnip',color=white,bought=false,cost=2,description='need a boost?'},
+          {42,'lazers',color=white,bought=false,cost=3,description='yes, literally lazers'},
           {48,'jetpack',color=white,bought=false,cost=8, description='altitude for your catitude'},
-          {54,'lots o\' yarn',color=white,bought=false,cost=1, description='crush em with cashmere'} 
+          {54,'lots o\' yarn',color=white,bought=false,cost=5, description='crush em with cashmere'} 
 }
 
 spent=0
