@@ -53,6 +53,8 @@ function player_eachframe()
 
   if map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%60==0 then
     player.lives-=1
+    player.spr=1
+    sfx(7)
   end
 
   if player.lives<=0 then gameover_show() end
@@ -122,10 +124,11 @@ end
 
 function player_jump()
   player.spr=46
-    if btn(left) then player.dx-=1 end
-    if btn(right) then player.dx+=1 end
-    player.dy-=player.jumpmomentum
-    player.jumpcount+=1
+  if btn(left) then player.dx-=1 end
+  if btn(right) then player.dx+=1 end
+  player.dy-=player.jumpmomentum
+  player.jumpcount+=1
+  sfx(12)
 end
 
 function player_shoulddoublejump()
@@ -154,6 +157,7 @@ function player_jetpack()
   if player.y>1 then
       player.dy=-1.5
   end
+  sfx(9)
 end
 
 function player_wouldcollidex()
