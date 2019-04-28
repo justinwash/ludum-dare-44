@@ -5,11 +5,13 @@ __lua__
 -- lifecycle functions: run every frame --
 function _init()
   game={}
+  t=0
   player_init()
   menu_show()
 end
 
 function _update60()
+  t+=1
   game.upd()
 end
 

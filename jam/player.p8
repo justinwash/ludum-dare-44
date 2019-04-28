@@ -55,10 +55,10 @@ function player_update()
   if not player.busy then
     player_act=player_idle
     if player_shouldmove() then player_act=player_move end
+    if player_shouldclimb() then player_act=player_climb end
     if player_shouldjump() then player_act=player_jump end
     if player_shoulddoublejump() then player_act=player_doublejump end
     if player_shouldjetpack() then player_act=player_jetpack end
-    if player_shouldclimb() then player_act=player_climb end
   end
 
   player_act()
@@ -66,6 +66,8 @@ function player_update()
 end
 
 function player_draw() 
+  if btn(left) then player.flip=false end
+  if btn(right) then player.flip=true end
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
 end
 
@@ -74,7 +76,7 @@ function player_act()
 end
 
 function player_idle()  
-  -- reset jump strength
+  player.spr=1
 end
 
 function player_shouldmove()
@@ -87,12 +89,20 @@ function player_shouldmove()
 end
 
 function player_move() 
+  if player_isonground() then
+    if t%20==0 then player.spr=5 end
+    if t%40==0 then player.spr=7 end
+  end
   if btn(left) then player.dx-=1 end
   if btn(right) then player.dx+=1 end
 end
 
 function player_shouldjump()
-  if btnp(btn1) and player_isonground() then
+  if btnp(btn1) and 
+  (player_isonground() or
+  (map_getflag(map_gettile(player.x+7,player.y+7))==2
+  or map_getflag(map_gettile(player.x+7,player.y+16))==2))
+   then
     return true
   else 
     return false 
@@ -100,6 +110,7 @@ function player_shouldjump()
 end
 
 function player_jump()
+  player.spr=46
     if btn(left) then player.dx-=1 end
     if btn(right) then player.dx+=1 end
     player.dy-=player.jumpmomentum
@@ -126,6 +137,7 @@ function player_shouldjetpack()
 end
 
 function player_jetpack()
+  player.spr=9
   if btn(left) then player.dx-=1 end
   if btn(right) then player.dx+=1 end
   if player.y>1 then
@@ -166,7 +178,10 @@ function player_shouldclimb()
 end
 
 function player_climb()
-  player.y-=2.4
+  player.spr=37
+  if map_getflag(map_gettile(player.x+7,player.y+14))==2 then
+    player.y-=2.4
+  else player_jump() end
 end
 
 function player_isonground()
