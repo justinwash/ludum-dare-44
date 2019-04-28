@@ -12,7 +12,7 @@ function pigeons_draw()
     local seed = rnd(birdModule.spawnSeed)
     seed = flr(seed)
 
-    if seed == 1 then
+    if seed == 1 and not yarnballs_isBought() then
         pigeons_attack()
     end
 
@@ -77,7 +77,6 @@ function pigeons_createPigeon()
     end
 
     function pigeon:draw() 
-        -- printh("Draw me at " .. self.x)
         spr(self.spr, self.x, self.y, self.w/8, self.h/8)
     end
 
