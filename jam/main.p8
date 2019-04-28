@@ -36,6 +36,7 @@ function game_draw()
   cls(dark_blue)
   map_draw()
   player_draw()
+  yarnballs_draw()
 end
 
 function game_checkfail()
