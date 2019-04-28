@@ -51,7 +51,7 @@ function player_eachframe()
   if player.dx>0 then player.flip=true
   elseif player.dx<0 then player.flip=false end
 
-  if (map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%60==0) then
+  if (map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%30==0) then
     player.lives-=1
     player.spr=1
     sfx(7)
@@ -65,11 +65,11 @@ function player_update()
 
   if not player.busy then
     player_act=player_idle
-    if player_shouldmove() then player_act=player_move end
-    if player_shouldclimb() then player_act=player_climb end
-    if player_shouldjump() then player_act=player_jump end
-    if player_shoulddoublejump() then player_act=player_doublejump end
-    if player_shouldjetpack() then player_act=player_jetpack end
+    if player_shouldmove() then player_act=player_move current='move' end
+    if player_shouldclimb() then player_act=player_climb current='climb' end
+    if player_shouldjump() then player_act=player_jump current='jump' end
+    if player_shoulddoublejump() then player_act=player_doublejump current='djump' end
+    if player_shouldjetpack() then player_act=player_jetpack current='jet' end
   end
 
   player_act()
@@ -80,8 +80,8 @@ function player_draw()
   if btn(left) then player.flip=false end
   if btn(right) then player.flip=true end
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
-  print('lives: ' ..player.lives)
-  
+  --print('lives: ' ..player.lives)
+  print(current)
 end
 
 function player_act()
@@ -93,10 +93,9 @@ function player_idle()
 end
 
 function player_shouldmove()
-  if btn(left) 
-  or btn(right)
-  or btn(up)
-  or btn(down) then 
+  if (btn(left) 
+  or btn(right))
+  and not player_wouldcollidex() then 
     return true
   else return false end
 end
@@ -166,7 +165,7 @@ local x=player.x
   local w=player.w
   local h=player.h
   
-  if map_wouldcollide(x+player.dx,y,w,h) then
+  if map_wouldcollide(x+player.dx*2,y,w,h) then
     return true
   else return false end
 end
@@ -215,14 +214,6 @@ function player_updatepos()
   local y=player.y
   local w=player.w
   local h=player.h
-  
-  if player_wouldcollidex() then
-    player.dx=0
-  end
-
-  if player_wouldcollidey() then
-    player.dy=0
-  end
 
   --player cannot scroll left on the first map page
   if map_getPage() == 0 and player.x < 1 then
@@ -233,13 +224,25 @@ function player_updatepos()
   if player.y == 0 then
     player.dy = 1
   end
-if player.dx>1 then player.dx=1 end
-  if player.dx<-1 then player.dx=-1 end
   
-  player.x+=player.dx
-  player.y+=player.dy
+  if player.dx>1 then player.dx=1 end
+  if player.dx<-1 then player.dx=-1 end
+
+  if player.dy<-3 then player.dy=-3 end
+
+  if player_wouldcollidex() then
+    player.dx=0
+  end
+
+  if player_wouldcollidey() then
+    player.dy=0
+  end
 
   map_shouldScroll()
+
+  -- these MUST be at the end of this function
+  player.x+=player.dx
+  player.y+=player.dy
 end
 
 

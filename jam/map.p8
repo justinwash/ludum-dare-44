@@ -63,17 +63,17 @@ function map_getflag(tile)
 end
 
 function map_wouldcollide(x,y,w,h)
+  colliding=false
   y=y+h/2
   h=h/2
-  for i=x-1,x+w,w do
+  for i=x+1,x+w-2,1 do
     if map_getflag(map_gettile(i,y))==1
     or map_getflag(map_gettile(i,y+h-1))==1
     then
-      return true
+      colliding=true
     end
   end
-
-  return false
+  return colliding
 end
 
 function map_getPage() 
