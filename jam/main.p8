@@ -37,6 +37,7 @@ function game_draw()
   map_draw()
   player_draw()
   yarnballs_draw()
+  pigeons_draw()
 end
 
 function game_checkfail()

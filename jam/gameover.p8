@@ -15,6 +15,9 @@ function gameover_update()
     --reset map page 
     map_goToPage(0)
 
+    --reset yarnballs
+    yarnballs_reset()
+
   end
 end
 
