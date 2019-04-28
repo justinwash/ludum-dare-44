@@ -8,13 +8,13 @@ yarn = {
     balls = {}
 }
 
-function yarnballs_reset() 
-    yarn.loop = 0
-    yarn.available = true
-end
+function yarnballs_draw() 
 
-function yarnballs_generate() 
-    for i=1,8 do yarn.balls[i]=yarnballs_createball(i) end
+    if purchases[4].bought then
+        yarn_go()
+        yarn.loop+=1
+    end
+
 end
 
 function yarnballs_createball(seed) 
@@ -26,15 +26,6 @@ function yarnballs_createball(seed)
         h=16
     }
     return ball
-end
-
-function yarnballs_draw() 
-
-    if purchases[4].bought then
-        yarn_go()
-        yarn.loop+=1
-    end
-
 end
 
 function yarn_go()
@@ -60,4 +51,11 @@ function yarn_go()
 
 end
 
---   spr(yarn.spr, yarn.x, yarn.y, yarn.w/8, yarn.h/8)
+function yarnballs_reset() 
+    yarn.loop = 0
+    yarn.available = true
+end
+
+function yarnballs_generate() 
+    for i=1,8 do yarn.balls[i]=yarnballs_createball(i) end
+end
