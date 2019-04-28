@@ -10,7 +10,7 @@ end
 function gameover_update()
   if btnp(btn1) then
     printh("Restart!")
-    _init()
+    game.upd=buy_show
 
     --reset map page 
     map_goToPage(0)
