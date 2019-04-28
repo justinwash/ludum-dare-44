@@ -8,7 +8,14 @@ function gameover_show()
 end
 
 function gameover_update()
-  if btnp(btn1) then _init() end
+  if btnp(btn1) then
+    printh("Restart!")
+    _init()
+
+    --reset map page 
+    map_goToPage(0)
+
+  end
 end
 
 function gameover_draw()

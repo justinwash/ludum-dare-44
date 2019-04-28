@@ -13,5 +13,6 @@ end
 
 function menu_draw()
   cls()
-  print("press z to start", 10, 10)
+  -- print("press z to start", 10, 10)
+  buy_show() 
 end
