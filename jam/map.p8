@@ -34,6 +34,10 @@ function map_gettile(screenx, screeny)
   return mget(x,y)
 end
 
+function map_goToPage(page) 
+  bg.celx = page * 16
+end
+
 function map_shouldScroll() 
 
   local sizeFactor = 8
