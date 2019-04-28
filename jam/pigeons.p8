@@ -41,7 +41,21 @@ function pigeons_attack()
 end
 
 function pigeons_cleanup()
-    -- need to read more about lua for this one
+
+    local index = 1
+
+    for k in pairs(birdModule.birdsInFlight) do
+        
+        index += 1
+        local pigeon = birdModule.birdsInFlight[k]
+        
+        if pigeon.x < 1 then
+            del(birdModule.birdsInFlight, pigeon)
+        end
+
+    end
+
+    -- printh(#birdModule.birdsInFlight .. " birds remaining")
 end
 
 function pigeons_createPigeon() 
