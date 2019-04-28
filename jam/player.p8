@@ -51,7 +51,7 @@ function player_eachframe()
   if player.dx>0 then player.flip=true
   elseif player.dx<0 then player.flip=false end
 
-  if map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%60==0 then
+  if (map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%60==0) then
     player.lives-=1
     player.spr=1
     sfx(7)

@@ -5,7 +5,7 @@ __lua__
 birdModule={
     loop=0,
     birdsInFlight={},
-    spawnSeed=60
+    spawnSeed=80
 }
 
 function pigeons_draw() 
@@ -28,6 +28,7 @@ function pigeons_move()
 
         pigeon:draw()
         pigeon:fly()
+        pigeon:hit()
 
     end
 end
@@ -71,11 +72,23 @@ function pigeons_createPigeon()
 
     function pigeon:fly() 
         self.x-=1
+        if t%20==0 then pigeon.spr=96 end
+        if t%40==0 then pigeon.spr=98 end
     end
 
     function pigeon:draw() 
         -- printh("Draw me at " .. self.x)
         spr(self.spr, self.x, self.y, self.w/8, self.h/8)
+    end
+
+    function pigeon:hit()
+        if pigeon.x - player.x == 0
+        and ((pigeon.y - player.y+7 < 12 and pigeon.y - player.y+7 > 0) 
+        or (player.y - pigeon.y+10 < 12 and player.y - pigeon.y+10 > 0)) then
+            player.lives-=1
+            sfx(7)
+            player.dx-=2
+        end
     end
 
     return pigeon
