@@ -15,6 +15,9 @@ orange,yellow,green,blue,indigo,pink,peach=
 #include buy.p8
 #include yarnballs.p8
 #include pigeons.p8
+#include levelclear.p8
+#include levelfail.p8
+#include win.p8
 
 -- player --
 #include player.p8

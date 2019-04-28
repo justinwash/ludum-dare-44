@@ -8,7 +8,7 @@ cursor={
   pos=1
 }
 
-purchases={ {36,'double-jump',color=white,bought=false,cost=3,description='...it\'s a double jump'},
+purchases={ {36,'catnip',color=white,bought=false,cost=3,description='need a boost?'},
           {42,'lazers',color=white,bought=false,cost=2,description='yes, literally lazers'},
           {48,'jetpack',color=white,bought=false,cost=8, description='altitude for your catitude'},
           {54,'lots o\' yarn',color=white,bought=false,cost=1, description='crush em with cashmere'} 

@@ -6,6 +6,8 @@ __lua__
 function _init()
   game={}
   t=0
+  levels=2
+  currentlevel=1
   player_init()
   menu_show()
   music(3,10000)
@@ -26,7 +28,6 @@ function game_show()
   mapy = 0
   player_init()
   music(0,5000)
-
   game.upd = game_update
   game.draw = game_draw
 end

@@ -57,7 +57,7 @@ function player_eachframe()
     sfx(7)
   end
 
-  if player.lives<=0 then gameover_show() end
+  if player.lives<=0 then levelfail_show() end
 end
 
 function player_update()
@@ -70,6 +70,7 @@ function player_update()
     if player_shouldjump() then player_act=player_jump current='jump' end
     if player_shoulddoublejump() then player_act=player_doublejump current='djump' end
     if player_shouldjetpack() then player_act=player_jetpack current='jet' end
+    if player_shouldclearlevel() then levelclear_show() end
   end
 
   player_act()
@@ -80,8 +81,10 @@ function player_draw()
   if btn(left) then player.flip=false end
   if btn(right) then player.flip=true end
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
-  --print('lives: ' ..player.lives)
-  print(current)
+
+  rectfill(10,110,48,122,blue)
+  rectfill(8,108,46,120,red)
+  print('lives: ' ..player.lives, 12, 112, white)
 end
 
 function player_act()
@@ -205,6 +208,12 @@ function player_isonground()
   local h=player.h
 
   if map_wouldcollide(x,y+1,w,h) then
+    return true
+  else return false end
+end
+
+function player_shouldclearlevel()
+  if map_getflag(map_gettile(player.x+7,player.y+14))==4 then
     return true
   else return false end
 end
