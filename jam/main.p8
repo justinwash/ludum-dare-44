@@ -8,6 +8,7 @@ function _init()
   t=0
   player_init()
   menu_show()
+  music(3,10000)
 end
 
 function _update60()
@@ -24,6 +25,8 @@ function game_show()
   mapx = 0
   mapy = 0
   player_init()
+  music(0,5000)
+
   game.upd = game_update
   game.draw = game_draw
 end
