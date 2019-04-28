@@ -11,7 +11,7 @@ cursor={
 purchases={ {24,'double-jump',color=white,bought=false,cost=3},
           {30,'lazers',color=white,bought=false,cost=2},
           {36,'jetpack',color=white,bought=false,cost=8},
-          {42,'the biggest ball o\' yarn',color=white,bought=false,cost=9} 
+          {42,'lots o\' yarn',color=white,bought=false,cost=1} 
 }
 
 spent=0
@@ -44,6 +44,7 @@ function buy_update()
   end
 
   if btnp(btn2) then game_show() end
+  
 end
 
 function buy_draw()

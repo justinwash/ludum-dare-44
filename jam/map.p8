@@ -26,10 +26,10 @@ function map_gettile(screenx, screeny)
   local x=flr(screenx/8 + bg.celx) 
   local y=flr(screeny/8 + bg.cely)
 
-  printh("screenx: " .. screenx)
-  printh("bg: (" .. bg.sx .. ", " .. bg.sy .. ")")
-  printh("cel: (" .. bg.celx .. ", " .. bg.cely .. ")")
-  printh("map page: " .. bg.page)
+  -- printh("screenx: " .. screenx)
+  -- printh("bg: (" .. bg.sx .. ", " .. bg.sy .. ")")
+  -- printh("cel: (" .. bg.celx .. ", " .. bg.cely .. ")")
+  -- printh("map page: " .. bg.page)
 
   return mget(x,y)
 end
