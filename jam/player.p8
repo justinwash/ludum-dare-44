@@ -58,6 +58,7 @@ function player_update()
     if player_shouldjump() then player_act=player_jump end
     if player_shoulddoublejump() then player_act=player_doublejump end
     if player_shouldjetpack() then player_act=player_jetpack end
+    if player_shouldclimb() then player_act=player_climb end
   end
 
   player_act()
@@ -154,6 +155,20 @@ function player_wouldcollidey()
   else return false end
 end
 
+function player_shouldclimb()
+  if btn(left) then player.dx-=1 end
+  if btn(right) then player.dx+=1 end
+
+  if (map_getflag(map_gettile(player.x+7,player.y+7))==2
+  or map_getflag(map_gettile(player.x+7,player.y+16))==2) and btn(up) then
+    return true
+  else return false end
+end
+
+function player_climb()
+  player.y-=2.4
+end
+
 function player_isonground()
   local x=player.x
   local y=player.y
@@ -188,7 +203,9 @@ function player_updatepos()
   if player.y == 0 then
     player.dy = 1
   end
-
+if player.dx>1 then player.dx=1 end
+  if player.dx<-1 then player.dx=-1 end
+  
   player.x+=player.dx
   player.y+=player.dy
 
