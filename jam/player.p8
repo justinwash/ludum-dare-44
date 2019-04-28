@@ -5,8 +5,8 @@ __lua__
 player={
   spr=1,
   flip=true,
-  x=63,
-  y=63,
+  x=0,
+  y=0,
   dx=0,
   dy=0,
   w=16,
@@ -20,7 +20,7 @@ player={
 
 function player_init()
   player.x=63
-  player.y=63
+  player.y=43
 
   player.abilities={
     djump=purchases[1].bought,
