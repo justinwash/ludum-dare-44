@@ -17,6 +17,10 @@ function yarnballs_draw()
 
 end
 
+function yarnballs_isBought()
+    return purchases[4].bought
+end
+
 function yarnballs_createball(seed) 
     local ball = {
         spr=35,
