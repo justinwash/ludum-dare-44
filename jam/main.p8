@@ -9,7 +9,7 @@ function _init()
   levels=2
   currentlevel=1
   player_init()
-  menu_show()
+  win_show()
   music(3,10000)
 end
 

@@ -9,7 +9,6 @@ end
 
 function win_update()
   if btnp(btn1) then
-    printh("Restart!")
     game.upd=menu_show
 
     --reset map page 
@@ -22,7 +21,16 @@ function win_update()
 end
 
 function win_draw()
-  cls(dark_blue)
-  print("you win!", 10, 10, 7)
-  print("press z to restart", 10, 20, 7)
+  cls(blue)
+    rectfill(32,10,102,22,dark_blue)
+    rectfill(30,8,100,20,red)
+    print("taki didn\'t die!", 34, 12, white)
+
+    rectfill(15,36,118,48,dark_blue)
+    rectfill(13,34,116,46,red)
+    print("thank you for playing", 23, 38, white)
+
+    rectfill(18,60,116,72,dark_blue)
+    rectfill(16,58,114,70,red)
+    print("press [z] to play again", 20, 62, 7)
 end
