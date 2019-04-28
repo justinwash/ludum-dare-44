@@ -11,6 +11,7 @@ player={
   dy=0,
   w=16,
   h=16,
+  lives=9,
   busy=false,
   jumpmomentum=3,
   jumpcount=0,
@@ -28,6 +29,8 @@ function player_init()
     jetpack=purchases[3].bought,
     yarn=purchases[4].bought
   }
+
+  player.lives=9-spent
 end
 
 function player_eachframe()
@@ -47,6 +50,12 @@ function player_eachframe()
 
   if player.dx>0 then player.flip=true
   elseif player.dx<0 then player.flip=false end
+
+  if map_getflag(map_gettile(player.x+7,player.y+7))==16 and t%60==0 then
+    player.lives-=1
+  end
+
+  if player.lives<=0 then gameover_show() end
 end
 
 function player_update()
@@ -69,6 +78,8 @@ function player_draw()
   if btn(left) then player.flip=false end
   if btn(right) then player.flip=true end
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
+  print('lives: ' ..player.lives)
+  
 end
 
 function player_act()
@@ -76,7 +87,7 @@ function player_act()
 end
 
 function player_idle()  
-  player.spr=1
+  player.spr=44
 end
 
 function player_shouldmove()
