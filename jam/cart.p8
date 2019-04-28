@@ -10,6 +10,7 @@ orange,yellow,green,blue,indigo,pink,peach=
 
 -- lifecycle hooks --
 #include main.p8
+#include story.p8
 #include menu.p8
 #include gameover.p8
 #include buy.p8

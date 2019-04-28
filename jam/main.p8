@@ -28,7 +28,6 @@ function game_show()
   mapy = 0
   player_init()
   music(0,5000)
-  birdModule.birdsInFlight={}
   game.upd = game_update
   game.draw = game_draw
 end

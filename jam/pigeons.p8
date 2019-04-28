@@ -38,10 +38,10 @@ function pigeons_move()
 end
 
 function pigeons_attack() 
-    if game.upd==game_update then
+    if game.upd==game_update or game.upd==menu_update then
       local pigeon = pigeons_createPigeon()
       birdModule.birdsInFlight[#birdModule.birdsInFlight+1] = pigeon
-    end
+    else birdModule.birdsInFlight={} end
 end
 
 function pigeons_cleanup()
