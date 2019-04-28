@@ -60,8 +60,8 @@ end
 
 function map_wouldcollide(x,y,w,h)
   for i=x-1,x+w,w do
-    if map_getflag(map_gettile(i,y))>0
-    or map_getflag(map_gettile(i,y+h-1))>0
+    if map_getflag(map_gettile(i,y))==1
+    or map_getflag(map_gettile(i,y+h-1))==1
     then
       return true
     end
