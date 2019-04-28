@@ -8,7 +8,7 @@ function menu_show()
 end
 
 function menu_update()
-  if btnp(btn1) then game_show() end
+  if btnp(btn1) then buy_show() end
 end
 
 function menu_draw()
