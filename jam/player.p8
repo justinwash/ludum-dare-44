@@ -123,9 +123,9 @@ end
 function player_updateactivities()
   --move laser and draw
     if player.laser and player.laser.active == true then
-      -- printh("move dat laser")
-      player_movelaser()
-      -- player_drawlaser()
+      if player_movelaser() then
+        player_killenemies()
+      end
     end
 end
 
@@ -139,7 +139,13 @@ function player_movelaser()
     if player.laser.x > 126 or player.laser.x < 1 then
       player.laser.active = false
     end
+
+    return player.laser.active
 end
+
+function player_killenemies() 
+  pigeons_killcheck(player.laser)
+end 
 
 function player_drawlaser()
   local laser = player.laser

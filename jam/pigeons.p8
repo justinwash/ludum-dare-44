@@ -109,3 +109,19 @@ function pigeon_offset(offset)
 
     end
 end
+
+function pigeons_killcheck(weaponPosition) 
+    local index = 1
+
+    for k in pairs(birdModule.birdsInFlight) do
+        local pigeon = birdModule.birdsInFlight[k]
+        
+        if weaponPosition.x - 2 <= pigeon.x and weaponPosition.x + 2 >= pigeon.x then
+            if weaponPosition.y -8 <= pigeon.y and weaponPosition.y + 12 >= pigeon.x then
+                del(birdModule.birdsInFlight, pigeon)
+            end
+        end
+
+        index += 1
+    end
+end
