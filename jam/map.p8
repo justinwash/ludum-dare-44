@@ -17,7 +17,7 @@ function map_update()
 end
 
 function map_draw()
-  map(bg.celx, bg.cely, bg.sx, bg.sy, 16 ,16)
+  map(bg.celx, bg.cezxzzly, bg.sx, bg.sy, 16 ,16)
   map(bg.celx, bg.cely, bg.sx + 128, bg.sy, 16 ,16)
   -- map(bg.sx, bg.sy, bg.sx + 128, bg.sy, 16 ,16)
 end

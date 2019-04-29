@@ -16,7 +16,8 @@ player={
   jumpmomentum=3,
   jumpcount=0,
   timeonground=0,
-  abilities={}
+  abilities={},
+  invuln=0
 }
 
 function player_init()
@@ -40,31 +41,34 @@ function player_eachframe()
   local h=player.h
 
   player.dx=0
-  if not player_isonground() then
-    player.timeonground=0
-    player.dy+=0.2
-    if player.dy>2 then player.dy=2 end
-  else 
-    player.timeonground+=1
-    player.jumpcount=0 end
 
-  if player.dx>0 then player.flip=true
-  elseif player.dx<0 then player.flip=false end
+  if player.invuln==0 then
+    if not player_isonground() then
+      player.timeonground=0
+      player.dy+=0.2
+      if player.dy>2 then player.dy=2 end
+    else 
+      player.timeonground+=1
+      player.jumpcount=0 end
 
-  if ((map_getflag(map_gettile(player.x+7,player.y+14))==16
-  or map_getflag(map_gettile(player.x+7,player.y+2))==16) and t%30==0) then
-    player.lives-=1
-    player.spr=1
-    sfx(7)
-  end
+    if player.dx>0 then player.flip=true
+    elseif player.dx<0 then player.flip=false end
 
-  if player.lives<=0 then levelfail_show() end
+    if ((map_getflag(map_gettile(player.x+7,player.y+14))==16
+    or map_getflag(map_gettile(player.x+7,player.y+2))==16) and t%30==0) then
+      player.lives-=1
+      player.spr=1
+      sfx(7)
+    end
+
+    if player.lives<=0 then levelfail_show() end
+  else player.dx=-0.2 player.dy=0 end
 end
 
 function player_update()
   player_eachframe()
 
-  if not player.busy then
+  if player.invuln==0 then
     player_act=player_idle
     if player_shouldmove() then player_act=player_move current='move' end
     if player_shouldclimb() then player_act=player_climb current='climb' end
@@ -73,7 +77,7 @@ function player_update()
     if player_shouldshootlasers() then player_act=player_shootlasers current='lasers' end
     if player_shouldjetpack() then player_act=player_jetpack current='jet' end
     if player_shouldclearlevel() then levelclear_show() end
-  end
+  else player_act=player_hurt end
 
   player_updateactivities()
   player_act()
@@ -100,6 +104,12 @@ end
 
 function player_idle()  
   player.spr=44
+end
+
+function player_hurt()
+  player.invuln-=1
+  if t%10==0 then player.spr=142 end
+  if t%20==0 then player.spr=42 end
 end
 
 function player_shouldshootlasers()

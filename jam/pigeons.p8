@@ -5,12 +5,12 @@ __lua__
 birdModule={
     loop=0,
     birdsInFlight={},
-    spawnSeed=40
+    spawnSeed=80
 }
 
 function pigeons_draw() 
     if yarnballs_isBought() then
-        birdModule.spawnSeed=140
+        birdModule.spawnSeed=160
     end
 
     local seed = rnd(birdModule.spawnSeed)
@@ -84,10 +84,9 @@ function pigeons_createPigeon()
     end
 
     function pigeon:hit()
-        if pigeon.x - player.x == 0
-        and ((pigeon.y - player.y+7 < 12 and pigeon.y - player.y+7 > 0) 
-        or (player.y - pigeon.y+10 < 12 and player.y - pigeon.y+10 > 0)) then
+        if abs(pigeon.x-player.x-7)<4 and abs(pigeon.y-player.y-7)<4 and player.invuln==0 then
             player.lives-=1
+            player.invuln=60
             sfx(7)
             player.dx-=2
         end
