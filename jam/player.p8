@@ -86,7 +86,6 @@ function player_draw()
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
 
   if player.laser and player.laser.active == true then
-    printh("draw laser")
     player_drawlaser()
   end
 
@@ -153,7 +152,7 @@ function player_createlaser()
     x=player.x,
     y=player.y + 10,
     w=16,
-    h=1,
+    h=2,
     spr=56,
     heading = 1,
     active=true
