@@ -46,12 +46,14 @@ function map_shouldScroll()
   if player.x > 127 then
     bg.celx += scrollFactor
     player.x -= scrollFactor * sizeFactor
+    pigeon_offset(-127)
     bg.page+=1
   end
 
   if player.x < 0 and bg.page > 0 then 
     bg.celx -= scrollFactor
     player.x += scrollFactor * sizeFactor
+    pigeon_offset(127)
     bg.page-=1
   end
 
@@ -63,15 +65,17 @@ function map_getflag(tile)
 end
 
 function map_wouldcollide(x,y,w,h)
-  for i=x-1,x+w,w do
+  colliding=false
+  y=y+h/2
+  h=h/2
+  for i=x+1,x+w-2,1 do
     if map_getflag(map_gettile(i,y))==1
     or map_getflag(map_gettile(i,y+h-1))==1
     then
-      return true
+      colliding=true
     end
   end
-
-  return false
+  return colliding
 end
 
 function map_getPage() 

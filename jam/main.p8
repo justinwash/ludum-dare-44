@@ -5,11 +5,16 @@ __lua__
 -- lifecycle functions: run every frame --
 function _init()
   game={}
+  t=0
+  levels=2
+  currentlevel=1
   player_init()
   menu_show()
+  music(3,10000)
 end
 
 function _update60()
+  t+=1
   game.upd()
 end
 
@@ -22,6 +27,7 @@ function game_show()
   mapx = 0
   mapy = 0
   player_init()
+  music(0,5000)
   game.upd = game_update
   game.draw = game_draw
 end
@@ -35,9 +41,9 @@ end
 function game_draw()
   cls(dark_blue)
   map_draw()
-  player_draw()
   yarnballs_draw()
   pigeons_draw()
+  player_draw()
 end
 
 function game_checkfail()
