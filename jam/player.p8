@@ -42,7 +42,6 @@ function player_eachframe()
 
   player.dx=0
 
-  if player.invuln<60 then
     if not player_isonground() then
       player.timeonground=0
       player.dy+=0.2
@@ -63,17 +62,18 @@ function player_eachframe()
       sfx(7)
     elseif ((map_getflag(map_gettile(player.x+7,player.y+14))==16
     or map_getflag(map_gettile(player.x+7,player.y+2))==16)) then
-      player.invuln-=1 
+      --do nothing
     end
 
     if player.lives<=0 then levelfail_show() end
-  else player.dx=-0.2 player.dy=0 end
+
+    player.invuln-=1
 end
 
 function player_update()
   player_eachframe()
 
-  if player.invuln<60 then
+  if player.invuln<100 then
     player_act=player_idle
     if player_shouldmove() then player_act=player_move current='move' end
     if player_shouldclimb() then player_act=player_climb current='climb' end

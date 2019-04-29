@@ -41,6 +41,6 @@ function vehicle_hit()
     player.invuln=120
     cameraoffset=1
     sfx(7)
-    player.dx-=2
+    --player.dx-=2
   end
 end

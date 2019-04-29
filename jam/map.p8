@@ -10,6 +10,10 @@ bg={
   page=0
 }
 
+function map_init()
+  bg.page=0
+end
+
 function map_update()
   vehicle_update()
   girl_update()

@@ -27,6 +27,7 @@ end
 function game_show()
   mapx = 0
   mapy = 0
+  bg.page=0
   player_init()
   music(0,5000)
   game.upd = game_update
