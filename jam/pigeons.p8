@@ -84,9 +84,10 @@ function pigeons_createPigeon()
     end
 
     function pigeon:hit()
-        if abs(pigeon.x-player.x-7)<4 and abs(pigeon.y-player.y-7)<4 and player.invuln==0 then
+        if abs(pigeon.x-player.x-7)<8 and abs(pigeon.y-player.y-7)<8 and player.invuln<60 then
             player.lives-=1
-            player.invuln=60
+            player.invuln=120
+            cameraoffset=1
             sfx(7)
             player.dx-=2
         end

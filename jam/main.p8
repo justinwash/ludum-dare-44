@@ -11,6 +11,7 @@ function _init()
   player_init()
   menu_show()
   music(3,10000)
+  cameraoffset=0
 end
 
 function _update60()
@@ -44,12 +45,25 @@ function game_draw()
   yarnballs_draw()
   pigeons_draw()
   player_draw()
+  cam_screenshake()
 end
 
 function game_checkfail()
-
   if player.y > 127 then 
     gameover_show()
   end
+end
+
+function cam_screenshake()
+  local fade = 0.15
+  local offset_x=16-rnd(32)
+  local offset_y=16-rnd(32)
+  offset_x*=cameraoffset
+  offset_y*=cameraoffset
   
+  camera(offset_x,offset_y)
+  cameraoffset*=fade
+  if cameraoffset<0.05 then
+    camereaoffset=0
+  end
 end

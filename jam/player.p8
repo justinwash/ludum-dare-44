@@ -42,7 +42,7 @@ function player_eachframe()
 
   player.dx=0
 
-  if player.invuln==0 then
+  if player.invuln<60 then
     if not player_isonground() then
       player.timeonground=0
       player.dy+=0.2
@@ -55,10 +55,15 @@ function player_eachframe()
     elseif player.dx<0 then player.flip=false end
 
     if ((map_getflag(map_gettile(player.x+7,player.y+14))==16
-    or map_getflag(map_gettile(player.x+7,player.y+2))==16) and t%30==0) then
+    or map_getflag(map_gettile(player.x+7,player.y+2))==16) and player.invuln<1) then
       player.lives-=1
-      player.spr=1
+      player.invuln=120
+      player_hurt()
+      cameraoffset=1
       sfx(7)
+    elseif ((map_getflag(map_gettile(player.x+7,player.y+14))==16
+    or map_getflag(map_gettile(player.x+7,player.y+2))==16)) then
+      player.invuln-=1 
     end
 
     if player.lives<=0 then levelfail_show() end
@@ -68,7 +73,7 @@ end
 function player_update()
   player_eachframe()
 
-  if player.invuln==0 then
+  if player.invuln<60 then
     player_act=player_idle
     if player_shouldmove() then player_act=player_move current='move' end
     if player_shouldclimb() then player_act=player_climb current='climb' end
@@ -107,9 +112,11 @@ function player_idle()
 end
 
 function player_hurt()
+  if player.invuln>60 then
+    if t%10==0 then player.spr=142 end
+    if t%20==0 then player.spr=42 end
+  end
   player.invuln-=1
-  if t%10==0 then player.spr=142 end
-  if t%20==0 then player.spr=42 end
 end
 
 function player_shouldshootlasers()
