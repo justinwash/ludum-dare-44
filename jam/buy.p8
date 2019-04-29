@@ -19,6 +19,8 @@ spent=0
 function buy_show()
   game.upd = buy_update
   game.draw = buy_draw
+
+  birdModule.birdsInFlight={}
 end
 
 function buy_update()

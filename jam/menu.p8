@@ -16,7 +16,7 @@ function menu_update()
   if t%40==0 then title.y=16 end
   if t%60==0 then title.y=18 end
 
-  if btnp(btn1) then buy_show() end
+  if btnp(btn1) then story_show() end
 end
 
 function menu_draw()
@@ -30,5 +30,5 @@ function menu_draw()
 
   sspr(72,0,16,16,16,title.y,100,100,true)
 
-  print("press [z] to start", 29, 112,white)
+  print("press [z] to start", 29, 118,white)
 end
