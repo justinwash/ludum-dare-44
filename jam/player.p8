@@ -70,10 +70,12 @@ function player_update()
     if player_shouldclimb() then player_act=player_climb current='climb' end
     if player_shouldjump() then player_act=player_jump current='jump' end
     if player_shoulddoublejump() then player_act=player_doublejump current='djump' end
+    if player_shouldshootlasers() then player_act=player_shootlasers current='lasers' end
     if player_shouldjetpack() then player_act=player_jetpack current='jet' end
     if player_shouldclearlevel() then levelclear_show() end
   end
 
+  player_updateactivities()
   player_act()
   player_updatepos()
 end
@@ -82,6 +84,11 @@ function player_draw()
   if btn(left) then player.flip=false end
   if btn(right) then player.flip=true end
   spr(player.spr, player.x, player.y, player.w/8, player.h/8, player.flip)
+
+  if player.laser and player.laser.active == true then
+    printh("draw laser")
+    player_drawlaser()
+  end
 
   rectfill(10,110,48,122,blue)
   rectfill(8,108,46,120,red)
@@ -94,6 +101,75 @@ end
 
 function player_idle()  
   player.spr=44
+end
+
+function player_shouldshootlasers()
+  if player.abilities.lazers and btn(btn2) then 
+    return true
+  end
+
+  return false
+end
+
+function player_shootlasers() 
+
+  if not player.laser or player.laser.active == false then
+    --new laser
+    printh("created new laser")
+    player.laser = player_createlaser()
+  end
+
+end
+
+function player_updateactivities()
+  --move laser and draw
+    if player.laser and player.laser.active == true then
+      -- printh("move dat laser")
+      player_movelaser()
+      -- player_drawlaser()
+    end
+end
+
+function player_movelaser()
+    if player.laser.heading == 1 then
+      player.laser.x += 1
+    else 
+      player.laser.x -= 1
+    end
+
+    if player.laser.x > 126 or player.laser.x < 1 then
+      player.laser.active = false
+    end
+end
+
+function player_drawlaser()
+  local laser = player.laser
+  -- printh("laser: " .. laser.x .. ", " .. laser.y)
+  spr(laser.spr, laser.x, laser.y, laser.w/8, laser.h/8)
+end
+
+function player_createlaser() 
+  local laser = {
+    x=player.x,
+    y=player.y + 10,
+    w=16,
+    h=1,
+    spr=56,
+    heading = 1,
+    active=true
+  }
+
+  if player.flip then
+    --right
+    laser.heading = 1
+    laser.x += 12
+  else
+    --left
+    laser.heading = 0
+    laser.x -= 12
+  end
+
+  return laser
 end
 
 function player_shouldmove()
