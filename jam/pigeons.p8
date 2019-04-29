@@ -95,3 +95,17 @@ function pigeons_createPigeon()
 
     return pigeon
 end
+
+function pigeon_offset(offset)
+    local index = 1
+    for k in pairs(birdModule.birdsInFlight) do
+        index += 1
+        local pigeon = birdModule.birdsInFlight[k]
+        pigeon.x+=offset
+
+        if pigeon.x < 1 then
+            del(birdModule.birdsInFlight, pigeon)
+        end
+
+    end
+end
