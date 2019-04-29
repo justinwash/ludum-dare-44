@@ -12,9 +12,9 @@ function menu_show()
 end
 
 function menu_update()
-  if t%20==0 then title.y=14 end
-  if t%40==0 then title.y=16 end
-  if t%60==0 then title.y=18 end
+  if t%20==0 then title.y=18 end
+  if t%40==0 then title.y=20 end
+  if t%60==0 then title.y=22 end
 
   if btnp(btn1) then story_show() end
 end
