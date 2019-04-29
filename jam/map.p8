@@ -11,15 +11,16 @@ bg={
 }
 
 function map_update()
-  -- scroll map. breaks collision rn
-  -- bg.sx -= 1
-  -- if bg.sx < -127 then bg.sx = 0 end
+  vehicle_update()
+  girl_update()
 end
 
 function map_draw()
   map(bg.celx, bg.cezxzzly, bg.sx, bg.sy, 16 ,16)
   map(bg.celx, bg.cely, bg.sx + 128, bg.sy, 16 ,16)
-  -- map(bg.sx, bg.sy, bg.sx + 128, bg.sy, 16 ,16)
+  
+  vehicle_draw()
+  girl_draw()
 end
 
 function map_gettile(screenx, screeny)
