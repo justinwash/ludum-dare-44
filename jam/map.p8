@@ -46,12 +46,14 @@ function map_shouldScroll()
   if player.x > 127 then
     bg.celx += scrollFactor
     player.x -= scrollFactor * sizeFactor
+    pigeon_offset(-127)
     bg.page+=1
   end
 
   if player.x < 0 and bg.page > 0 then 
     bg.celx -= scrollFactor
     player.x += scrollFactor * sizeFactor
+    pigeon_offset(127)
     bg.page-=1
   end
 
