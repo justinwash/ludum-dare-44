@@ -1,7 +1,7 @@
 # Don't Die, Dumpstercat!
 A game made for Ludum Dare 44
 
-![game2.jpg](///raw/9cc/b/z/22d87.jpg)
+![game2.jpg](https://static.jam.vg/raw/9cc/b/z/22d87.jpg)
 
 Here in a city quite like all the others... there lives a **dumpster cat.**
 
@@ -23,7 +23,7 @@ The bargain is yours to make. Guide her well.
 
 
 
-![Taki Cat Gif.gif](///raw/9cc/b/z/22db8.gif)
+![Taki Cat Gif.gif](https://static.jam.vg/raw/9cc/b/z/22db8.gif)
 
 
 
