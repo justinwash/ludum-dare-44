@@ -21,6 +21,7 @@ end
 
 function _draw()
   game.draw()
+  cam_screenshake()
 end
 
 -- main game --
@@ -46,7 +47,6 @@ function game_draw()
   yarnballs_draw()
   pigeons_draw()
   player_draw()
-  cam_screenshake()
 end
 
 function game_checkfail()

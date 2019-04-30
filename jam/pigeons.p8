@@ -118,8 +118,8 @@ function pigeons_killcheck(weaponPosition)
     for k in pairs(birdModule.birdsInFlight) do
         local pigeon = birdModule.birdsInFlight[k]
         
-        if weaponPosition.x - 2 <= pigeon.x and weaponPosition.x + 2 >= pigeon.x then
-            if weaponPosition.y -8 <= pigeon.y and weaponPosition.y + 12 >= pigeon.x then
+        if abs(weaponPosition.x-pigeon.x)<8 then
+            if abs(weaponPosition.y-pigeon.y-8)<8 then
                 del(birdModule.birdsInFlight, pigeon)
             end
         end

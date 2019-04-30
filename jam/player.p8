@@ -21,7 +21,7 @@ player={
 }
 
 function player_init()
-  player.x=63
+  player.x=12
   player.y=43
 
   player.abilities={
@@ -113,8 +113,8 @@ end
 
 function player_hurt()
   if player.invuln>60 then
-    if t%10==0 then player.spr=142 end
-    if t%20==0 then player.spr=42 end
+    if t%5==0 then player.spr=142 end
+    if t%10==0 then player.spr=42 end
   end
   player.invuln-=1
 end

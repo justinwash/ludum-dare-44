@@ -21,6 +21,7 @@ function levelfail_update()
 end
 
 function levelfail_draw()
+  cls(dark_blue)
   if currentlevel<=levels then
     rectfill(36,10,94,22,blue)
     rectfill(34,8,92,20,red)
