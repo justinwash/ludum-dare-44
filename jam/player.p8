@@ -351,6 +351,11 @@ function player_updatepos()
   -- these MUST be at the end of this function
   player.x+=player.dx
   player.y+=player.dy
+
+  if map_getPage()==7 and player.x>126 then
+    player.x=126
+  end
+
 end
 
 
