@@ -7,11 +7,15 @@ bg={
   cely=0,
   sx=0,
   sy=0,
-  page=0
+  page=0,
+  yOffset=0
 }
 
 function map_init()
   bg.page=0
+  if currentlevel > 1 then
+    bg.yOffset = ((currentlevel - 1) * 16) + 1
+  end
 end
 
 function map_update()
@@ -20,8 +24,7 @@ function map_update()
 end
 
 function map_draw()
-  map(bg.celx, bg.cezxzzly, bg.sx, bg.sy, 16 ,16)
-  map(bg.celx, bg.cely, bg.sx + 128, bg.sy, 16 ,16)
+  map(bg.celx, bg.cely + bg.yOffset, bg.sx, bg.sy, 16 ,16)
   
   vehicle_draw()
   girl_draw()
@@ -29,7 +32,7 @@ end
 
 function map_gettile(screenx, screeny)
   local x=flr(screenx/8 + bg.celx) 
-  local y=flr(screeny/8 + bg.cely)
+  local y=flr(screeny/8 + bg.cely + bg.yOffset)
 
   -- printh("screenx: " .. screenx)
   -- printh("bg: (" .. bg.sx .. ", " .. bg.sy .. ")")

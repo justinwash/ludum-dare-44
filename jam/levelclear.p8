@@ -3,14 +3,14 @@ version 16
 __lua__
 
 function levelclear_show()
-  --currentlevel+=1
+  currentlevel+=1
   game.upd = levelclear_update
   game.draw = levelclear_draw
 end
 
 function levelclear_update()
   if btnp(btn1) then
-    game.upd=win_show
+    game.upd=buy_show
 
     --reset map page 
     map_goToPage(0)
